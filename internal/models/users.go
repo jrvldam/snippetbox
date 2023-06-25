@@ -10,6 +10,12 @@ import (
 	"golang.org/x/crypto/bcrypt"
 )
 
+type UserModelInterface interface {
+	Insert(name, email, password string) error
+	Authenticate(email, password string) (int, error)
+	Exists(id int) (bool, error)
+}
+
 // User represents a user account in our database
 type User struct {
 	ID             int
@@ -48,8 +54,8 @@ func (m *UserModel) Insert(name, email, password string) error {
 	return nil
 }
 
-// Autenticate verifies whether a user exists with the provided email address and password. This will return the relevant user ID if they do.
-func (m *UserModel) Autenticate(email, password string) (int, error) {
+// Authenticate verifies whether a user exists with the provided email address and password. This will return the relevant user ID if they do.
+func (m *UserModel) Authenticate(email, password string) (int, error) {
 	var id int
 	var hashedPassword []byte
 
