@@ -29,3 +29,7 @@ func (m *UserModel) Exists(id int) (bool, error) {
 		return false, nil
 	}
 }
+
+func (m *UserModel) Get(id int) (*models.User, error) {
+	return &models.User{}, nil
+}
