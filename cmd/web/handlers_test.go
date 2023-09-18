@@ -9,7 +9,7 @@ import (
 )
 
 func TestPing(t *testing.T) {
-	app := newTestApplicaton(t)
+	app := newTestApplication(t)
 
 	ts := newTestServer(t, app.routes())
 	defer ts.Close()
@@ -21,7 +21,7 @@ func TestPing(t *testing.T) {
 }
 
 func TestSnippetView(t *testing.T) {
-	app := newTestApplicaton(t)
+	app := newTestApplication(t)
 	ts := newTestServer(t, app.routes())
 	defer ts.Close()
 
@@ -78,7 +78,7 @@ func TestSnippetView(t *testing.T) {
 }
 
 func TestUserSignup(t *testing.T) {
-	app := newTestApplicaton(t)
+	app := newTestApplication(t)
 	ts := newTestServer(t, app.routes())
 	defer ts.Close()
 
@@ -193,7 +193,7 @@ func TestUserSignup(t *testing.T) {
 }
 
 func TestSnippetCreate(t *testing.T) {
-	app := newTestApplicaton(t)
+	app := newTestApplication(t)
 	ts := newTestServer(t, app.routes())
 	defer ts.Close()
 

@@ -15,12 +15,12 @@ type Validator struct {
 	FieldErrors    map[string]string
 }
 
-// Valid return true if FieldErros does not contain any entries
+// Valid return true if FieldErrors does not contain any entries
 func (v *Validator) Valid() bool {
 	return len(v.FieldErrors) == 0 && len(v.NonFieldErrors) == 0
 }
 
-// AddFieldError adds an error message to FieldErros, if given key does not exist
+// AddFieldError adds an error message to FieldErrors, if given key does not exist
 func (v *Validator) AddFieldError(key, message string) {
 	if v.FieldErrors == nil {
 		v.FieldErrors = make(map[string]string)
@@ -31,12 +31,12 @@ func (v *Validator) AddFieldError(key, message string) {
 	}
 }
 
-// AddNonFieldError adds an error message to NoFieldErros
+// AddNonFieldError adds an error message to NoFieldErrors
 func (v *Validator) AddNonFieldError(message string) {
 	v.NonFieldErrors = append(v.NonFieldErrors, message)
 }
 
-// CheckField add an error message to FieldErros if ok argument is fasle
+// CheckField add an error message to FieldErrors if ok argument is false
 func (v *Validator) CheckField(ok bool, key, message string) {
 	if !ok {
 		v.AddFieldError(key, message)
@@ -53,7 +53,7 @@ func MaxChars(value string, n int) bool {
 	return utf8.RuneCountInString(value) <= n
 }
 
-// PermittedValue returns true if value is permited values list
+// PermittedValue returns true if value is permitted values list
 func PermittedValue[T comparable](value T, permittedValues ...T) bool {
 	for i := range permittedValues {
 		if value == permittedValues[i] {
@@ -69,7 +69,7 @@ func MinChars(value string, n int) bool {
 	return utf8.RuneCountInString(value) >= n
 }
 
-// Matches returns true if a value matches a porvided compiled regular expression pattern.
+// Matches returns true if a value matches a provided compiled regular expression pattern.
 func Matches(value string, rx *regexp.Regexp) bool {
 	return rx.MatchString(value)
 }

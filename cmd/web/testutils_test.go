@@ -29,7 +29,7 @@ func extractCSRFToken(t *testing.T, body string) string {
 	return html.UnescapeString(string(matches[1]))
 }
 
-func newTestApplicaton(t *testing.T) *application {
+func newTestApplication(t *testing.T) *application {
 	templateCache, err := newTemplateCache()
 	if err != nil {
 		t.Fatal(err)
